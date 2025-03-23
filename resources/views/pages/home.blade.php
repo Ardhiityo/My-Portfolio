@@ -4,14 +4,14 @@
 
 @section('content')
     {{-- Profile --}}
-    <section class="relative max-w-screen-md mx-auto">
-        <div class="border-2 rounded-t-lg min-h-40 bg-slate-400 border-slate-300"
+    <section class="relative max-w-screen-md mx-auto border-2 rounded-lg shadow border-slate-300">
+        <div class="rounded-t-lg min-h-48"
             style="background-image: url('./images/banner.jpeg'); background-size: 100% 100%; background-position: center;">
             <img src="{{ asset('images/profile.jpeg') }}" alt=""
-                class="absolute border-4 border-white rounded-full left-6 top-20 w-36 h-36">
+                class="absolute border-4 border-white rounded-full left-6 top-24 w-36 h-36">
         </div>
-        <div class="flex justify-between p-6 bg-white border-2 rounded-b-lg min-h-52 border-slate-300">
-            <section class="mt-14">
+        <div class="flex justify-between p-6 bg-white rounded-b-lg min-h-52 border-slate-300">
+            <section class="mt-12">
                 <div class="flex flex-col gap-2">
                     <h1>
                         <span class="text-lg font-semibold">Arya Adhi Prasetyo</span>
@@ -23,7 +23,7 @@
                     </p>
                 </div>
             </section>
-            <section class="invisible mt-14 sm:visible">
+            <section class="invisible mt-12 sm:visible">
                 <div class="flex items-center gap-1">
                     <img src="{{ asset('images/unival.jpeg') }}" alt="" class="w-7 h-7">
                     <p class="text-xs font-semibold">Universitas Al-Khairiyah</p>
@@ -34,8 +34,8 @@
     {{-- Profile --}}
 
     {{-- About me --}}
-    <section class="relative max-w-screen-md mx-auto my-2">
-        <div class="p-6 bg-white border-2 rounded-lg min-h-40 border-slate-300">
+    <section class="relative max-w-screen-md mx-auto my-2 bg-white border-2 rounded-lg shadow border-slate-300">
+        <div class="p-6 min-h-40 ">
             <h1 class="mb-4 text-lg font-semibold">Tentang</h1>
             <p class="text-sm">As a Fullstack Web Coding Mentor at Al-Khairiyah University and Full-stack Web
                 Developer,
@@ -51,7 +51,7 @@
     {{-- About me --}}
 
     {{-- Experience --}}
-    <section class="relative max-w-screen-md mx-auto bg-white border-2 rounded-lg border-slate-300">
+    <section class="relative max-w-screen-md mx-auto bg-white border-2 rounded-lg shadow border-slate-300">
         <div class="p-6 pb-0 min-h-40 ">
             <h1 class="mb-4 text-lg font-semibold">Pengalaman</h1>
             <div class="flex gap-3 mb-3">
@@ -92,7 +92,7 @@
     {{-- Experience --}}
 
     {{-- Education --}}
-    <section class="relative max-w-screen-md mx-auto my-2 bg-white border-2 rounded-lg border-slate-300">
+    <section class="relative max-w-screen-md mx-auto my-2 bg-white border-2 rounded-lg shadow border-slate-300">
         <div class="p-6 pb-0 min-h-40 ">
             <h1 class="mb-4 text-lg font-semibold">Pendidikan</h1>
             <div class="flex gap-3 mb-3">
@@ -119,15 +119,18 @@
             </div>
         </div>
         <div class="py-3 font-semibold border-t border-t-slate-300">
-            <h3 class="text-center text-slate-700">Tampilkan semua 3 pendidikan
-                <i class="fa-solid fa-arrow-right fa-sm"></i>
+            <h3 class="text-center text-slate-700">
+                <a href="{{ route('education') }}">
+                    Tampilkan semua 3 pendidikan
+                    <i class="fa-solid fa-arrow-right fa-sm"></i>
+                </a>
             </h3>
         </div>
     </section>
     {{-- Education --}}
 
     {{-- Certification --}}
-    <section class="relative max-w-screen-md mx-auto my-2 bg-white border-2 rounded-lg border-slate-300">
+    <section class="relative max-w-screen-md mx-auto my-2 bg-white border-2 rounded-lg shadow border-slate-300">
         <div class="p-6 pb-0 min-h-40 ">
             <h1 class="mb-4 text-lg font-semibold">Lisensi dan sertifikasi</h1>
             <div class="flex gap-3 mb-3">
@@ -154,15 +157,18 @@
             </div>
         </div>
         <div class="py-3 font-semibold border-t border-t-slate-300">
-            <h3 class="text-center text-slate-700">Tampilkan semua 3 lisensi dan sertifikasi
-                <i class="fa-solid fa-arrow-right fa-sm"></i>
+            <h3 class="text-center text-slate-700">
+                <a href="{{ route('certification') }}">
+                    Tampilkan semua 3 lisensi dan sertifikasi
+                    <i class="fa-solid fa-arrow-right fa-sm"></i>
+                </a>
             </h3>
         </div>
     </section>
     {{-- Certification --}}
 
     {{-- Project --}}
-    <section class="relative max-w-screen-md mx-auto my-2 bg-white border-2 rounded-lg border-slate-300">
+    <section class="relative max-w-screen-md mx-auto my-2 bg-white border-2 rounded-lg shadow border-slate-300">
         <div class="p-6 pb-0 min-h-40 ">
             <h1 class="mb-4 text-lg font-semibold">Proyek</h1>
             <div class="mb-3">
@@ -195,34 +201,91 @@
             </div>
         </div>
         <div class="py-3 font-semibold border-t border-t-slate-300">
-            <h3 class="text-center text-slate-700">Tampilkan semua 3 proyek
-                <i class="fa-solid fa-arrow-right fa-sm"></i>
+            <h3 class="text-center text-slate-700">
+                <a href="{{ route('project') }}">
+                    Tampilkan semua 3 proyek
+                    <i class="fa-solid fa-arrow-right fa-sm"></i>
+                </a>
             </h3>
         </div>
     </section>
     {{-- Project --}}
 
-    {{-- Project --}}
+    {{-- Skill --}}
     <section class="relative max-w-screen-md mx-auto my-2 bg-white border-2 rounded-lg border-slate-300">
         <div class="p-6 pb-0 min-h-40 ">
             <h1 class="mb-4 text-lg font-semibold">Keahlian</h1>
             <div class="mb-3">
                 <h1 class="font-semibold text-md">
-                    Filament
+                    Laravel
                 </h1>
                 <div class="my-3">
                     <div class="flex items-center gap-2 my-5 text-sm">
                         <img src="{{ asset('images/unival.jpeg') }}" alt="" class="w-7 h-7">
-                        <h1 class="font-semibold">Laravel</h1>
+                        <h1 class="font-semibold">Framework</h1>
                     </div>
                 </div>
             </div>
         </div>
         <div class="py-3 font-semibold border-t border-t-slate-300">
-            <h3 class="text-center text-slate-700">Tampilkan semua 3 keahlian
-                <i class="fa-solid fa-arrow-right fa-sm"></i>
+            <h3 class="text-center text-slate-700">
+                <a href="{{ route('skill') }}">
+                    Tampilkan semua 3 keahlian
+                    <i class="fa-solid fa-arrow-right fa-sm"></i>
+                </a>
             </h3>
         </div>
     </section>
-    {{-- Project --}}
+    {{-- Skill --}}
+
+    {{-- Course --}}
+    <section class="relative max-w-screen-md mx-auto my-2 bg-white border-2 rounded-lg shadow border-slate-300">
+        <div class="p-6 pb-0 min-h-40 ">
+            <h1 class="mb-4 text-lg font-semibold">Kursus</h1>
+            <div class="mb-3">
+                <h1 class="font-semibold text-md">
+                    Codepolitan
+                </h1>
+                <h3 class="text-sm">20 Mar 2024 - 20 Mar 2024</h3>
+                <div class="my-3 text-sm">
+                    <p>Kursus mahir fullstack web developer from a to z</p>
+                </div>
+            </div>
+        </div>
+        <div class="py-3 font-semibold border-t border-t-slate-300">
+            <h3 class="text-center text-slate-700">
+                <a href="{{ route('course') }}">
+                    Tampilkan semua 3 kursus
+                    <i class="fa-solid fa-arrow-right fa-sm"></i>
+                </a>
+            </h3>
+        </div>
+    </section>
+    {{-- Course --}}
+
+    {{-- Organization --}}
+    <section class="relative max-w-screen-md mx-auto my-2 bg-white border-2 rounded-lg shadow border-slate-300">
+        <div class="p-6 pb-0 min-h-40 ">
+            <h1 class="mb-4 text-lg font-semibold">Organisasi</h1>
+            <div class="mb-3">
+                <h1 class="font-semibold text-md">
+                    Kelompok studi Pasar Modal
+                </h1>
+                <h3 class="text-sm">Anggota · Mar 2024 - Sekarang </h3>
+                <div class="my-3 text-sm">
+                    <p>Sharing knowledge kepada mahasiswa betapa pentingnya investasi sedari dini, dan mejadi panitia dalam
+                        rangkaian acara-acara seminar investasi di dunia pasar modal.</p>
+                </div>
+            </div>
+        </div>
+        <div class="py-3 font-semibold border-t rounded-b-lg border-t-slate-300">
+            <h3 class="text-center text-slate-700">
+                <a href="{{ route('organization') }}">
+                    Tampilkan semua 3 organisasi
+                    <i class="fa-solid fa-arrow-right fa-sm"></i>
+                </a>
+            </h3>
+        </div>
+    </section>
+    {{-- Organization --}}
 @endsection
