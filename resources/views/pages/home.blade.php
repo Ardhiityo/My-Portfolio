@@ -18,10 +18,59 @@
                         <span class="text-xs text-slate-500">(He/Him)</span>
                     </h1>
                     <p class="text-sm">Fullstack Web Developer | Laravel Developer</p>
-                    <p class="text-xs text-slate-600">Cilegon, Banten, Indonesia • <span class="text-[#004182]">Informasi
+                    <p class="text-xs text-slate-600">Cilegon, Banten, Indonesia • <span
+                            class="text-[#004182] font-semibold" onclick="contact.showModal()">Informasi
                             kontak</span>
                     </p>
                 </div>
+
+                {{-- Modal contact --}}
+                <dialog id="contact" class="modal">
+                    <div class="modal-box">
+                        <h3 class="pb-5 text-lg font-semibold border-b border-b-slate-300">Arya Adhi Prasetyo</h3>
+                        <div>
+                            <h1 class="my-4 text-lg">Informasi Kontak</h1>
+                            <div class="flex flex-col my-3">
+                                <p>
+                                    <i class="inline mr-2 fa-brands fa-linkedin fa-lg"></i>
+                                    Linkedin
+                                </p>
+                                <a href="#" class="text-sm text-indigo-800">
+                                    linkedin.com/in/ardhiityo
+                                </a>
+                            </div>
+                            <div class="flex flex-col my-3">
+                                <p>
+                                    <i class="mr-2 fa-solid fa-phone fa-lg"></i>
+                                    Telepon
+                                </p>
+                                <p class="text-sm">+62-896-5055-7420 <span class="text-slate-600">(Ponsel)</span></p>
+                            </div>
+                            <div class="flex flex-col my-3">
+                                <p>
+                                    <i class="mr-2 fa-solid fa-location-dot fa-lg"></i>
+                                    Alamat
+                                </p>
+                                <a href="#" class="text-sm text-indigo-800">Link. Jombang Wetan RT/RW 001/005
+                                    Kelurahan
+                                    Jombang Wetan, Kecamatan
+                                    Jombang</a>
+                            </div>
+                            <div class="flex flex-col my-3">
+                                <p>
+                                    <i class="mr-2 fa-solid fa-envelope fa-lg"></i>
+                                    Email
+                                </p>
+                                <a href="#" class="text-sm text-indigo-800">aryaadi229@gmail.com</a>
+                            </div>
+                        </div>
+                    </div>
+                    <form method="dialog" class="modal-backdrop">
+                        <button>close</button>
+                    </form>
+                </dialog>
+                {{-- Modal contact --}}
+
             </section>
             <section class="invisible mt-12 sm:visible">
                 <div class="flex items-center gap-1">
