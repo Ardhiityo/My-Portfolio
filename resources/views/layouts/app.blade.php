@@ -2,7 +2,7 @@
 
 @include('partials.navbar')
 
-<main class="my-5">
+<main class="py-5 min-h-screen">
     @yield('content')
 </main>
 

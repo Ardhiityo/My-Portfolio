@@ -4,7 +4,7 @@
 
 @section('content')
     {{-- Profile --}}
-    <section class="relative max-w-screen-md mx-auto border-2 rounded-lg shadow border-slate-300">
+    <section class="relative max-w-screen-md mx-auto border-2 rounded-lg shadow border-slate-300 bg-white">
         <div class="rounded-t-lg min-h-48"
             style="background-image: url('./images/banner.jpeg'); background-size: 100% 100%; background-position: center;">
             <img src="{{ asset('images/profile.jpeg') }}" alt=""
@@ -48,6 +48,22 @@
                             </div>
                             <div class="flex flex-col my-3">
                                 <p>
+                                    <i class="mr-2 fa-solid fa-envelope fa-lg"></i>
+                                    Email
+                                </p>
+                                <a href="#" class="text-sm text-indigo-800">aryaadi229@gmail.com</a>
+                            </div>
+                            <div class="flex flex-col my-3">
+                                <p>
+                                    <i class="fa-brands fa-github fa-lg mr-2"></i>
+                                    Github
+                                </p>
+                                <a href="#" class="text-sm text-indigo-800">
+                                    https://github.com/Ardhiityo
+                                </a>
+                            </div>
+                            <div class="flex flex-col my-3">
+                                <p>
                                     <i class="mr-2 fa-solid fa-location-dot fa-lg"></i>
                                     Alamat
                                 </p>
@@ -55,13 +71,6 @@
                                     Kelurahan
                                     Jombang Wetan, Kecamatan
                                     Jombang</a>
-                            </div>
-                            <div class="flex flex-col my-3">
-                                <p>
-                                    <i class="mr-2 fa-solid fa-envelope fa-lg"></i>
-                                    Email
-                                </p>
-                                <a href="#" class="text-sm text-indigo-800">aryaadi229@gmail.com</a>
                             </div>
                         </div>
                     </div>
