@@ -95,15 +95,43 @@
     <section class="relative max-w-screen-md mx-auto my-2 bg-white border-2 rounded-lg shadow border-slate-300">
         <div class="p-6 min-h-40 ">
             <h1 class="mb-4 text-lg font-semibold">Tentang</h1>
-            <p class="text-sm">As a Fullstack Web Coding Mentor at Al-Khairiyah University and Full-stack Web
-                Developer,
-                I am highly
-                skilled in utilizing various technologies such as PHP, HTML, CSS, Javascript, as well as frameworks
-                such
-                as Laravel, Tailwind, Bootstrap and Laravel libraries such as Filament, Spatie, Breeze, Fortify, and
-                Socialite to build highly responsive and visually appealing user interfaces and admin dashboards for
-                a
-                seamless web experience. </p>
+
+
+            {{-- Collapse --}}
+            <div class="collapse">
+                <input type="checkbox" />
+                <div class="collapse-title text-sm p-0">
+                    <p>As a Fullstack Web Coding Mentor at Al-Khairiyah University and Full-stack Web
+                        Developer,
+                        I am highly
+                        skilled in utilizing various technologies such as PHP, HTML, CSS, Javascript, as well as frameworks
+                        such
+                        as Laravel, Tailwind, Bootstrap and Laravel libraries such as Filament, Spatie, Breeze, Fortify, and
+                        Socialite to build highly responsive and visually appealing user interfaces and admin dashboards for
+                        a
+                        seamless web experience...</p>
+                </div>
+                <div class="collapse-content text-sm p-0">
+                    <p>With many case studies gained from various coding courses and real project experiences ranging from
+                        the
+                        artificial intelligence sector, such as building expert system applications, and actively mentoring
+                        in
+                        various workshops, I have developed scalable and user-centric solutions, providing a great user
+                        experience.
+
+                        Moreover, as a Full-Stack Coding Mentor, my true passion lies in the field of education,
+                        specifically
+                        coding, aiming to empower individuals and drive positive change through sharing knowledge and
+                        creating
+                        meaningful impact.
+
+                        If you share similar interests or would like to discuss anything related to this field, I would love
+                        to
+                        connect with you! Feel free to contact me at aryaadi229@gmail.com, have a nice day!</p>
+                </div>
+            </div>
+            {{-- Collapse --}}
+
         </div>
     </section>
     {{-- About me --}}
