@@ -6,6 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Experience extends Model
 {
+    protected $guarded = [];
+
+    protected function casts()
+    {
+        return [
+            'image' => 'array'
+        ];
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -14,5 +23,10 @@ class Experience extends Model
     public function place()
     {
         return $this->belongsTo(Place::class);
+    }
+
+    public function jobType()
+    {
+        return $this->belongsTo(JobType::class);
     }
 }

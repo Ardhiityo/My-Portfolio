@@ -16,7 +16,9 @@ return new class extends Migration
             $table->string('linkedin');
             $table->string('phone');
             $table->string('github');
-            $table->foreignId('user_id')->constrained();
+            $table->text('address');
+            $table->foreignId('user_id')->constrained()
+                ->cascadeOnUpdate()->cascadeOnDelete();;
             $table->timestamps();
         });
     }

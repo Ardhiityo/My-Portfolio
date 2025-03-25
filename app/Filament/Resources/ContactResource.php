@@ -9,6 +9,7 @@ use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -36,6 +37,10 @@ class ContactResource extends Resource
                 Forms\Components\TextInput::make('github')
                     ->required()
                     ->maxLength(255),
+                Forms\Components\Textarea::make('address')
+                    ->required()
+                    ->columnSpanFull()
+                    ->maxLength(255),
             ]);
     }
 
@@ -49,17 +54,9 @@ class ContactResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('github')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('user_id')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('address')
+                    ->limit(15)
+                    ->searchable()
             ])
             ->filters([
                 //

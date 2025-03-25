@@ -17,8 +17,9 @@ return new class extends Migration
             $table->date('start_date');
             $table->date('end_date');
             $table->string('image');
-            $table->text('desciption');
-            $table->foreignId('user_id')->constrained();
+            $table->text('description');
+            $table->foreignId('user_id')->constrained()
+                ->cascadeOnUpdate()->cascadeOnDelete();;
             $table->timestamps();
         });
     }

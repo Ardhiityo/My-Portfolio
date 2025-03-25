@@ -16,10 +16,12 @@ return new class extends Migration
             $table->string('name');
             $table->text('address');
             $table->string('job_title');
-            $table->foreignId('pronoun_id');
+            $table->foreignId('pronoun_id')->constrained()
+                ->cascadeOnUpdate()->cascadeOnDelete();;
             $table->string('avatar');
             $table->string('background_image');
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')->constrained()
+                ->cascadeOnUpdate()->cascadeOnDelete();;
             $table->timestamps();
         });
     }

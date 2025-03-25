@@ -6,6 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Education extends Model
 {
+    protected $guarded = [];
+
+    protected function casts()
+    {
+        return [
+            'image' => 'array'
+        ];
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);

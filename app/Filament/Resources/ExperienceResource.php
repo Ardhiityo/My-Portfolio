@@ -25,6 +25,7 @@ class ExperienceResource extends Resource
             ->schema([
                 Forms\Components\Select::make('user_id')
                     ->required()
+                    ->columnSpanFull()
                     ->relationship('user', 'name'),
                 Forms\Components\TextInput::make('job_title')
                     ->required()
@@ -32,17 +33,23 @@ class ExperienceResource extends Resource
                 Forms\Components\Select::make('place_id')
                     ->required()
                     ->relationship('place', 'name'),
+                Forms\Components\Select::make('job_type_id')
+                    ->required()
+                    ->relationship('jobType', 'name')
+                    ->columnSpanFull(),
                 Forms\Components\DatePicker::make('start_date')
                     ->required(),
                 Forms\Components\DatePicker::make('end_date')
                     ->required(),
-                Forms\Components\Textarea::make('description')
-                    ->required()
-                    ->columnSpanFull(),
                 Forms\Components\FileUpload::make('image')
                     ->image()
+                    ->multiple()
+                    ->columnSpanFull()
                     ->directory('experience')
                     ->required(),
+                Forms\Components\RichEditor::make('description')
+                    ->required()
+                    ->columnSpanFull(),
             ]);
     }
 
@@ -52,8 +59,7 @@ class ExperienceResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('job_title')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('place_id')
-                    ->numeric()
+                Tables\Columns\TextColumn::make('place.name')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('start_date')
                     ->date()
@@ -61,18 +67,8 @@ class ExperienceResource extends Resource
                 Tables\Columns\TextColumn::make('end_date')
                     ->date()
                     ->sortable(),
-                Tables\Columns\ImageColumn::make('image'),
-                Tables\Columns\TextColumn::make('user_id')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\ImageColumn::make('image')
+                    ->circular(),
             ])
             ->filters([
                 //

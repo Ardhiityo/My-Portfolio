@@ -25,9 +25,11 @@ class PlaceResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('name')
                     ->required()
+                    ->unique()
                     ->maxLength(255),
                 Forms\Components\FileUpload::make('logo')
                     ->image()
+                    ->columnSpanFull()
                     ->directory('logo')
                     ->required()
                     ->directory('place'),
@@ -43,16 +45,11 @@ class PlaceResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('logo')
+                Tables\Columns\TextColumn::make('address')
+                    ->wrap()
                     ->searchable(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\ImageColumn::make('logo')
+                    ->circular(),
             ])
             ->filters([
                 //

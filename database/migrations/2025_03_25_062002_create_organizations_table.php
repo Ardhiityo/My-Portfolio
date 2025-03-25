@@ -14,10 +14,12 @@ return new class extends Migration
         Schema::create('organizations', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('job_title');
             $table->text('description');
             $table->date('start_date');
             $table->date('end_date');
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')->constrained()
+                ->cascadeOnUpdate()->cascadeOnDelete();;
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ogranizations');
+        Schema::dropIfExists('organizations');
     }
 };

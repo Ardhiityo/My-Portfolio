@@ -14,12 +14,16 @@ return new class extends Migration
         Schema::create('experiences', function (Blueprint $table) {
             $table->id();
             $table->string('job_title');
-            $table->foreignId('place_id')->constrained();
+            $table->foreignId('place_id')->constrained()
+                ->cascadeOnUpdate()->cascadeOnDelete();
             $table->date('start_date');
             $table->date('end_date');
             $table->text('description');
             $table->string('image');
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('user_id')->constrained()
+                ->cascadeOnUpdate()->cascadeOnDelete();;
+            $table->foreignId('job_type_id')->constrained()
+                ->cascadeOnUpdate()->cascadeOnDelete();;
             $table->timestamps();
         });
     }

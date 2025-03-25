@@ -36,13 +36,14 @@ class CertificationResource extends Resource
                 Forms\Components\TextInput::make('credential')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\FileUpload::make('image')
-                    ->image()
-                    ->directory('certification')
-                    ->required(),
-                Forms\Components\Textarea::make('description')
+                Forms\Components\TextInput::make('description')
                     ->required()
                     ->maxLength(255),
+                Forms\Components\FileUpload::make('image')
+                    ->image()
+                    ->columnSpanFull()
+                    ->directory('certification')
+                    ->required(),
             ]);
     }
 
@@ -51,9 +52,11 @@ class CertificationResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('title')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('place_id')
+                    ->searchable()
+                    ->limit(15),
+                Tables\Columns\TextColumn::make('place.name')
                     ->numeric()
+                    ->limit(15)
                     ->sortable(),
                 Tables\Columns\TextColumn::make('published_date')
                     ->date()
@@ -62,18 +65,13 @@ class CertificationResource extends Resource
                     ->date()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('credential')
+                    ->limit(15)
                     ->searchable(),
-                Tables\Columns\ImageColumn::make('image'),
                 Tables\Columns\TextColumn::make('description')
+                    ->limit(15)
                     ->searchable(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\ImageColumn::make('image')
+                    ->circular(),
             ])
             ->filters([
                 //

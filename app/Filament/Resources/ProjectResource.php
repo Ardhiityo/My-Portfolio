@@ -33,13 +33,15 @@ class ProjectResource extends Resource
                     ->required(),
                 Forms\Components\DatePicker::make('end_date')
                     ->required(),
-                Forms\Components\FileUpload::make('image')
-                    ->image()
-                    ->directory('project')
-                    ->required(),
                 Forms\Components\Textarea::make('desciption')
                     ->required()
                     ->columnSpanFull(),
+                Forms\Components\FileUpload::make('image')
+                    ->image()
+                    ->multiple()
+                    ->columnSpanFull()
+                    ->directory('project')
+                    ->required(),
 
             ]);
     }
@@ -49,6 +51,10 @@ class ProjectResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('title')
+                    ->limit(15)
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('description')
+                    ->limit(15)
                     ->searchable(),
                 Tables\Columns\TextColumn::make('start_date')
                     ->date()
@@ -56,18 +62,8 @@ class ProjectResource extends Resource
                 Tables\Columns\TextColumn::make('end_date')
                     ->date()
                     ->sortable(),
-                Tables\Columns\ImageColumn::make('image'),
-                Tables\Columns\TextColumn::make('user_id')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\ImageColumn::make('image')
+                    ->circular(),
             ])
             ->filters([
                 //

@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('certifications', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->foreignId('place_id')->constrained();
+            $table->foreignId('place_id')->constrained()
+                ->cascadeOnUpdate()->cascadeOnDelete();;
             $table->date('published_date');
             $table->date('expired_date');
             $table->string('credential');

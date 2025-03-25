@@ -32,20 +32,23 @@ class ProfileResource extends Resource
                 Forms\Components\FileUpload::make('avatar')
                     ->required()
                     ->image()
+                    ->columnSpanFull()
                     ->directory('profile/avatar'),
                 Forms\Components\FileUpload::make('background_image')
                     ->image()
+                    ->columnSpanFull()
                     ->directory('profile/background_image')
                     ->required(),
                 Forms\Components\TextInput::make('job_title')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\Textarea::make('address')
-                    ->required()
-                    ->maxLength(255),
                 Forms\Components\Select::make('pronoun_id')
                     ->required()
                     ->relationship('pronoun', 'name'),
+                Forms\Components\Textarea::make('address')
+                    ->required()
+                    ->columnSpanFull()
+                    ->maxLength(255),
             ]);
     }
 
@@ -54,28 +57,25 @@ class ProfileResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('address')
+                    ->limit(15)
                     ->searchable(),
                 Tables\Columns\TextColumn::make('job_title')
+                    ->limit(15)
                     ->searchable(),
-                Tables\Columns\TextColumn::make('pronoun_id')
-                    ->numeric()
+                Tables\Columns\TextColumn::make('pronoun.name')
+                    ->limit(15)
                     ->sortable(),
-                Tables\Columns\TextColumn::make('avatar')
+                Tables\Columns\TextColumn::make('user.email')
+                    ->limit(15)
+                    ->label('Email')
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('address')
+                    ->limit(15)
                     ->searchable(),
-                Tables\Columns\ImageColumn::make('background_image'),
-                Tables\Columns\TextColumn::make('user_id')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\ImageColumn::make('avatar')
+                    ->circular(),
+                Tables\Columns\ImageColumn::make('background_image')
+
             ])
             ->filters([
                 //
