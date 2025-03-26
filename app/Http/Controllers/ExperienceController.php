@@ -12,6 +12,7 @@ class ExperienceController extends Controller
     public function experience()
     {
         $experiences = $this->experienceService->getAllExperiences();
+
         return view('pages.experience', compact('experiences'));
     }
 }

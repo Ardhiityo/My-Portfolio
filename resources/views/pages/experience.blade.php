@@ -30,9 +30,11 @@
                         <div class="my-5 text-sm">
                             {!! $experience->description !!}
                             <div class="flex gap-3 my-3">
-                                @foreach ($experience->image as $image)
-                                    <img src="{{ asset('storage/' . $image) }}" alt="{{ $experience->job_title }}"
-                                        class="h-16 border rounded-lg border-slate-400 w-28">
+                                @foreach ($experience->image as $key => $image)
+                                    <a href="{{ asset('storage/' . $image) }}" data-lightbox="experience">
+                                        <img src="{{ asset('storage/' . $image) }}" alt="{{ $experience->job_title }}"
+                                            class="h-16 border rounded-lg border-slate-400 w-28">
+                                    </a>
                                 @endforeach
                             </div>
                         </div>

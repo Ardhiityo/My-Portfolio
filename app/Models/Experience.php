@@ -11,7 +11,8 @@ class Experience extends Model
     protected function casts()
     {
         return [
-            'image' => 'array'
+            'image' => 'array',
+            'caption' => 'array'
         ];
     }
 
