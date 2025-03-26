@@ -17,7 +17,7 @@ class ProjectResource extends Resource
 {
     protected static ?string $model = Project::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-clipboard-document-list';
+    protected static ?string $navigationIcon = 'heroicon-o-clipboard-document-check';
 
     public static function form(Form $form): Form
     {
@@ -29,20 +29,22 @@ class ProjectResource extends Resource
                 Forms\Components\TextInput::make('title')
                     ->required()
                     ->maxLength(255),
+                Forms\Components\TextInput::make('link')
+                    ->required()
+                    ->maxLength(255),
                 Forms\Components\DatePicker::make('start_date')
                     ->required(),
                 Forms\Components\DatePicker::make('end_date')
                     ->required(),
-                Forms\Components\Textarea::make('desciption')
+                Forms\Components\Textarea::make('description')
                     ->required()
                     ->columnSpanFull(),
                 Forms\Components\FileUpload::make('image')
+                    ->columnSpanFull()
                     ->image()
                     ->multiple()
-                    ->columnSpanFull()
                     ->directory('project')
                     ->required(),
-
             ]);
     }
 
@@ -56,6 +58,9 @@ class ProjectResource extends Resource
                 Tables\Columns\TextColumn::make('description')
                     ->limit(15)
                     ->searchable(),
+                Tables\Columns\TextColumn::make('link')
+                    ->limit(15)
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('start_date')
                     ->date()
                     ->sortable(),
@@ -63,7 +68,6 @@ class ProjectResource extends Resource
                     ->date()
                     ->sortable(),
                 Tables\Columns\ImageColumn::make('image')
-                    ->circular(),
             ])
             ->filters([
                 //

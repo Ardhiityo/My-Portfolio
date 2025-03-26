@@ -10,4 +10,9 @@ export default defineConfig({
         }),
         tailwindcss(),
     ],
+    resolve: {
+        alias: {
+            "~preline": path.resolve(__dirname, "node_modules/preline"),
+        },
+    },
 });

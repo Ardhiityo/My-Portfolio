@@ -20,6 +20,8 @@ return new class extends Migration
             $table->date('expired_date');
             $table->string('credential');
             $table->string('image');
+            $table->foreignId('user_id')->constrained()
+                ->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('description');
             $table->timestamps();
         });

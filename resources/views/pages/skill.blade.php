@@ -13,30 +13,13 @@
                 </div>
                 Keahlian
             </h1>
-            <div class="mt-3 border-b border-slate-200">
-                <h1 class="font-semibold text-md">
-                    Laravel
-                </h1>
-                <div class="my-3">
-                    <div class="flex items-center gap-2 my-5 text-sm">
-                        <img src="{{ asset('images/unival.jpeg') }}" alt="" class="w-7 h-7">
-                        <h1 class="font-semibold">Framework</h1>
-                    </div>
+            @foreach ($skills as $skill)
+                <div class="py-3 @if (!$loop->last) border-b border-b-slate-300 @endif">
+                    <h1 class="font-semibold">
+                        {{ $skill->name }} - {{ $skill->category->name }}
+                    </h1>
                 </div>
-            </div>
-            <div class="mt-3 border-b border-slate-200">
-                <h1 class="font-semibold text-md">
-                    Laravel
-                </h1>
-                <div class="my-3">
-                    <div class="flex items-center gap-2 my-5 text-sm">
-                        <img src="{{ asset('images/unival.jpeg') }}" alt="" class="w-7 h-7">
-                        <h1 class="font-semibold">Framework</h1>
-                    </div>
-                </div>
-            </div>
-
-
+            @endforeach
         </div>
     </section>
 @endsection

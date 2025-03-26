@@ -16,7 +16,7 @@ class CourseSeeder extends Seeder
     public function run(): void
     {
         $user = User::first();
-        $place = Place::first();
+        $place = Place::where('name', 'Codepolitan')->first();
 
         Course::create([
             'user_id' =>  $user->id,

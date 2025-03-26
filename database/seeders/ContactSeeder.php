@@ -18,7 +18,7 @@ class ContactSeeder extends Seeder
 
         Contact::create([
             'user_id' => $user->id,
-            'linkedin' => 'linkedin.com/in/ardhiityo',
+            'linkedin' => 'https://www.linkedin.com/in/ardhiityo/',
             'phone' => '+62-896-5055-7420',
             'github' => 'https://github.com/Ardhiityo',
             'address' => 'Link. Jombang Wetan RT/RW 001/005 Kelurahan Jombang Wetan, Kecamatan Jombang',

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->date('start_date');
             $table->date('end_date');
+            $table->string('link');
             $table->string('image');
             $table->text('description');
             $table->foreignId('user_id')->constrained()

@@ -13,26 +13,19 @@
                 </div>
                 Organisasi
             </h1>
-            <div class="mt-3 border-b border-slate-200">
-                <h1 class="font-semibold text-md">
-                    Kelompok studi Pasar Modal
-                </h1>
-                <h3 class="text-sm">Anggota · Mar 2024 - Sekarang </h3>
-                <div class="my-3 text-sm">
-                    <p>Sharing knowledge kepada mahasiswa betapa pentingnya investasi sedari dini, dan mejadi panitia dalam
-                        rangkaian acara-acara seminar investasi di dunia pasar modal.</p>
+            @foreach ($organizations as $organization)
+                <div class="py-3 @if (!$loop->last) border-b border-b-slate-300 @endif">
+                    <h1 class="font-semibold text-md">
+                        {{ $organization->name }}
+                    </h1>
+                    <h3 class="text-sm">{{ $organization->job_title }} ·
+                        {{ Carbon\Carbon::parse($organization->start_date)->format('M Y') }} -
+                        Sekarang </h3>
+                    <div class="my-3 text-sm">
+                        <p>{{ $organization->description }}</p>
+                    </div>
                 </div>
-            </div>
-            <div class="mt-3 border-b border-slate-200">
-                <h1 class="font-semibold text-md">
-                    Kelompok studi Pasar Modal
-                </h1>
-                <h3 class="text-sm">Anggota · Mar 2024 - Sekarang </h3>
-                <div class="my-3 text-sm">
-                    <p>Sharing knowledge kepada mahasiswa betapa pentingnya investasi sedari dini, dan mejadi panitia dalam
-                        rangkaian acara-acara seminar investasi di dunia pasar modal.</p>
-                </div>
-            </div>
+            @endforeach
         </div>
     </section>
 @endsection

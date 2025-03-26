@@ -13,50 +13,29 @@
                 </div>
                 Pendidikan
             </h1>
-            <div class="flex gap-3 mt-3 border-b border-slate-200">
-                <img src="{{ asset('images/unival.jpeg') }}" class="w-10 h-10" alt="">
-                <div>
-                    <h1 class="font-semibold text-md">Universitas Al-Khairiyah</h1>
-                    <p class="text-sm">Gelar sarjana, Teknik Informatika</p>
-                    <p class="text-sm text-slate-600">Jul 2022 - Jul 2026</p>
-                    <p class="text-sm">IPK : 4th Semester - GPA 3.62</p>
-                    <div class="my-5 text-sm">
-                        <p>I am an active undergraduate student of Informatics Engineering at Al-Khairiyah
-                            University,
-                            have a certificate of expertise, and project experience. I am very enthusiastic to share
-                            knowledge and work together. Let's establish friendship and collaboration to create
-                            something extraordinary.</p>
-                        <div class="flex gap-3 my-3">
-                            <img src="{{ asset('images/experience.jpeg') }}" alt=""
-                                class="h-16 border rounded-lg border-slate-400 w-28">
-                            <img src="{{ asset('images/experience.jpeg') }}" alt=""
-                                class="h-16 border rounded-lg border-slate-400 w-28">
+            @foreach ($educations as $education)
+                <div class="flex gap-3 mt-3 @if (!$loop->last) border-b border-slate-200 @endif">
+                    <img src="{{ asset('storage/' . $education->place->logo) }}" class="w-10 h-10"
+                        alt="{{ $education->place->name }}">
+                    <div>
+                        <h1 class="font-semibold text-md">{{ $education->place->name }}</h1>
+                        <p class="text-sm">{{ $education->degree }}</p>
+                        <p class="text-sm text-slate-600">
+                            {{ Carbon\Carbon::parse($education->start_date)->format('M Y') }}
+                            - {{ Carbon\Carbon::parse($education->end_date)->format('M Y') }}</p>
+                        <p class="text-sm">{{ $education->gpa }}</p>
+                        <div class="my-5 text-sm">
+                            {!! $education->description !!}
+                            <div class="flex gap-3 my-3">
+                                @foreach ($education->image as $image)
+                                    <img src="{{ asset('storage/' . $image) }}" alt="{{ $education->degree }}"
+                                        class="h-16 border rounded-lg border-slate-400 w-28">
+                                @endforeach
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="flex gap-3 mt-3 border-b border-slate-200">
-                <img src="{{ asset('images/unival.jpeg') }}" class="w-10 h-10" alt="">
-                <div>
-                    <h1 class="font-semibold text-md">Universitas Al-Khairiyah</h1>
-                    <p class="text-sm">Gelar sarjana, Teknik Informatika</p>
-                    <p class="text-sm text-slate-600">Jul 2022 - Jul 2026</p>
-                    <p class="text-sm">IPK : 4th Semester - GPA 3.62</p>
-                    <div class="my-5 text-sm">
-                        <p>I am an active undergraduate student of Informatics Engineering at Al-Khairiyah
-                            University,
-                            have a certificate of expertise, and project experience. I am very enthusiastic to share
-                            knowledge and work together. Let's establish friendship and collaboration to create
-                            something extraordinary.</p>
-                        <div class="flex gap-3 my-3">
-                            <img src="{{ asset('images/experience.jpeg') }}" alt=""
-                                class="h-16 border rounded-lg border-slate-400 w-28">
-                            <img src="{{ asset('images/experience.jpeg') }}" alt=""
-                                class="h-16 border rounded-lg border-slate-400 w-28">
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </section>
 @endsection

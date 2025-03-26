@@ -13,56 +13,32 @@
                 </div>
                 Pengalaman
             </h1>
-            <div class="flex gap-3 mt-3 border-b border-slate-200">
-                <img src="{{ asset('images/unival.jpeg') }}" class="w-10 h-10" alt="">
-                <div>
-                    <h1 class="font-semibold text-md">Fullstack Web Coding Mentor</h1>
-                    <p class="text-sm">Universitas Al-Khairiyah · Paruh Waktu</p>
-                    <p class="text-sm text-slate-600">Feb 2024 - Saat ini · 1 thn 2 bln</p>
-                    <p class="text-sm text-slate-600">Jl. Kh.Enggus Arja No.1, Citangkil, Kec. Citangkil, Kota
-                        Cilegon,
-                        Banten 42441 ·
-                        Di lokasi</p>
-                    <div class="my-5 text-sm">
-                        <p>- Teaching and Mentoring:
-                            Teach and mentor course participants in various certified coding classes, covering
-                            topics
-                            such
-                            as HTML, CSS, JavaScript, PHP, and frameworks like Laravel.</p>
-                        <div class="flex gap-3 my-3">
-                            <img src="{{ asset('images/experience.jpeg') }}" alt=""
-                                class="h-16 border rounded-lg border-slate-400 w-28">
-                            <img src="{{ asset('images/experience.jpeg') }}" alt=""
-                                class="h-16 border rounded-lg border-slate-400 w-28">
+            @foreach ($experiences as $experience)
+                <div class="flex gap-3 mt-3 @if (!$loop->last) border-b border-slate-300 @endif">
+                    <img src="{{ asset('storage/' . $experience->place->logo) }}" class="w-10 h-10"
+                        alt="{{ $experience->place->name }}">
+                    <div>
+                        <h1 class="font-semibold text-md">{{ $experience->job_title }}</h1>
+                        <p class="text-sm">
+                            {{ $experience->place->name }} · {{ $experience->jobType->name }}
+                        </p>
+                        <p class="text-sm text-slate-600">
+                            {{ Carbon\Carbon::parse($experience->start_date)->format('M Y') }} - Saat ini · 1 thn 2 bln
+                        </p>
+                        <p class="text-sm text-slate-600">{{ $experience->place->address }} ·
+                            Di lokasi</p>
+                        <div class="my-5 text-sm">
+                            {!! $experience->description !!}
+                            <div class="flex gap-3 my-3">
+                                @foreach ($experience->image as $image)
+                                    <img src="{{ asset('storage/' . $image) }}" alt="{{ $experience->job_title }}"
+                                        class="h-16 border rounded-lg border-slate-400 w-28">
+                                @endforeach
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="flex gap-3 mt-3 border-b border-slate-200">
-                <img src="{{ asset('images/unival.jpeg') }}" class="w-10 h-10" alt="">
-                <div>
-                    <h1 class="font-semibold text-md">Fullstack Web Coding Mentor</h1>
-                    <p class="text-sm">Universitas Al-Khairiyah · Paruh Waktu</p>
-                    <p class="text-sm text-slate-600">Feb 2024 - Saat ini · 1 thn 2 bln</p>
-                    <p class="text-sm text-slate-600">Jl. Kh.Enggus Arja No.1, Citangkil, Kec. Citangkil, Kota
-                        Cilegon,
-                        Banten 42441 ·
-                        Di lokasi</p>
-                    <div class="my-5 text-sm">
-                        <p>- Teaching and Mentoring:
-                            Teach and mentor course participants in various certified coding classes, covering
-                            topics
-                            such
-                            as HTML, CSS, JavaScript, PHP, and frameworks like Laravel.</p>
-                        <div class="flex gap-3 my-3">
-                            <img src="{{ asset('images/experience.jpeg') }}" alt=""
-                                class="h-16 border rounded-lg border-slate-400 w-28">
-                            <img src="{{ asset('images/experience.jpeg') }}" alt=""
-                                class="h-16 border rounded-lg border-slate-400 w-28">
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </section>
 @endsection

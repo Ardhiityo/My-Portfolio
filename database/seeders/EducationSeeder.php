@@ -36,12 +36,11 @@ class EducationSeeder extends Seeder
             'user_id' =>  $user->id,
             'place_id' => $place->id,
             'degree' => 'Gelar Sarjana, Teknik Informatika',
-            'gpa' => 'IPK: 4th Semester - GPA 3.62',
+            'gpa' => '4th Semester - GPA 3.62',
             'start_date' => '2025-04-01',
             'end_date' => '2025-04-01',
             'description' => "<p>I am an active undergraduate student of Informatics Engineering at Al-Khairiyah University, have a certificate of expertise, and project experience. I am very enthusiastic to share knowledge and work together. Let's establish friendship and collaboration to create something extraordinary.&nbsp;</p>",
             'image' => [$storedPath],
-
         ]);
     }
 }

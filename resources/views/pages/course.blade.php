@@ -13,24 +13,18 @@
                 </div>
                 Kursus
             </h1>
-            <div class="mt-3 border-b border-slate-200">
-                <h1 class="font-semibold text-md">
-                    Codepolitan
-                </h1>
-                <h3 class="text-sm">20 Mar 2024 - 20 Mar 2024</h3>
-                <div class="my-3 text-sm">
-                    <p>Kursus mahir fullstack web developer from a to z</p>
+            @foreach ($courses as $course)
+                <div class="py-3 @if (!$loop->last) border-b border-b-slate-300 @endif">
+                    <h1 class="font-semibold text-md">
+                        {{ $course->place->name }}
+                    </h1>
+                    <h3 class="text-sm">{{ Carbon\Carbon::parse($course->start_date)->format('d M Y') }} -
+                        {{ Carbon\Carbon::parse($course->end_date)->format('d M Y') }}</h3>
+                    <div class="my-3 text-sm">
+                        <p>{{ $course->description }}</p>
+                    </div>
                 </div>
-            </div>
-            <div class="mt-3 border-b border-slate-200">
-                <h1 class="font-semibold text-md">
-                    Codepolitan
-                </h1>
-                <h3 class="text-sm">20 Mar 2024 - 20 Mar 2024</h3>
-                <div class="my-3 text-sm">
-                    <p>Kursus mahir fullstack web developer from a to z</p>
-                </div>
-            </div>
+            @endforeach
         </div>
     </section>
 @endsection
