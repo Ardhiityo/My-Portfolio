@@ -228,8 +228,10 @@
                                 </div>
                                 <div class="flex gap-3 mb-3">
                                     @foreach ($experience->image as $image)
-                                        <img src="{{ asset('storage/' . $image) }}" alt="{{ $experience->job_title }}"
-                                            class="h-16 border rounded-lg border-slate-400 w-28">
+                                        <a href="{{ asset('storage/' . $image) }}" data-lightbox="experience">
+                                            <img src="{{ asset('storage/' . $image) }}" alt="{{ $experience->job_title }}"
+                                                class="h-16 border rounded-lg border-slate-400 w-28">
+                                        </a>
                                     @endforeach
                                 </div>
                             </div>
@@ -307,8 +309,10 @@
                                 </div>
                                 <div class="flex gap-3 my-3">
                                     @foreach ($education->image as $image)
-                                        <img src="{{ asset('storage/' . $image) }}" alt="education_image"
-                                            class="h-16 border rounded-lg border-slate-400 w-28">
+                                        <a href="{{ asset('storage/' . $image) }}" data-lightbox="education">
+                                            <img src="{{ asset('storage/' . $image) }}" alt="education_image"
+                                                class="h-16 border rounded-lg border-slate-400 w-28">
+                                        </a>
                                     @endforeach
                                 </div>
                             </div>
@@ -384,8 +388,10 @@
                                     <i class="fa-solid fa-up-right-from-square fa-sm"></i>
                                 </a>
                                 <div class="flex items-center gap-3 mt-5">
-                                    <img src="{{ asset('storage/' . $certification->image) }}" alt="certification"
-                                        class="h-16 border rounded-lg border-slate-400 w-28">
+                                    <a href="{{ asset('storage/' . $certification->image) }}" data-lightbox="certification">
+                                        <img src="{{ asset('storage/' . $certification->image) }}" alt="certification"
+                                            class="h-16 border rounded-lg border-slate-400 w-28">
+                                    </a>
                                     <h1 class="font-semibold">
                                         {{ $certification->description }}
                                     </h1>
@@ -456,8 +462,10 @@
                             <div class="flex items-center gap-3 mt-5">
                                 @foreach ($project->image as $image)
                                     <div class="relative h-16 w-28 border rounded-lg border-slate-400 p-1">
-                                        <img src="{{ asset('storage/' . $image) }}" alt="{{ $project->title }}"
-                                            class="h-full mx-auto">
+                                        <a href="{{ asset('storage/' . $image) }}" data-lightbox="project">
+                                            <img src="{{ asset('storage/' . $image) }}" alt="{{ $project->title }}"
+                                                class="h-full mx-auto">
+                                        </a>
                                         @if ($loop->first)
                                             <div
                                                 class="absolute bottom-0 right-0 p-1 bg-white rounded-tl-lg rounded-br-lg shadow border-1 border-slate-400">
