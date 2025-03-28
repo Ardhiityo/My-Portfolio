@@ -15,8 +15,10 @@
         @else
             <div class="rounded-t-lg min-h-48"
                 style="background-image: url({{ asset('storage/' . $profile->background_image) }}); background-size: 100% 100%; background-position: center;">
-                <img src="{{ asset('storage/' . $profile->avatar) }}" alt="profile"
-                    class="absolute border-4 border-white rounded-full left-6 top-24 w-36 h-36">
+                <a href="{{ asset('storage/' . $profile->avatar) }}" data-lightbox="avatar">
+                    <img src="{{ asset('storage/' . $profile->avatar) }}" alt="profile"
+                        class="absolute border-4 border-white rounded-full left-6 top-24 w-36 h-36">
+                </a>
             </div>
         @endif
 
@@ -168,11 +170,20 @@
     <section class="relative max-w-screen-md mx-auto my-2 bg-white border-2 rounded-lg shadow border-slate-300">
         <div class="p-6 min-h-24 ">
             {{-- Collapse --}}
-            <div tabindex="0" class="collapse collapse-arrow">
-                <div class="collapse-title font-semibold text-lg px-0 pb-0">Tentang</div>
-                <div class="collapse-content text-sm p-0">
-                    {!! $about->description !!}
-                </div>
+            <div x-data="{ expanded: false }" class="text-sm">
+                <template x-if="!expanded">
+                    <div>{!! Str::words($about->description, 50, '...') !!}</div>
+                </template>
+                <template x-if="expanded">
+                    <div>{!! $about->description !!}</div>
+                </template>
+                @if (str_word_count($about->description) > 50)
+                    <div class="flex justify-end">
+                        <button class="text-slate-600 hover:underline mt-1 text-sm " @click="expanded = !expanded"
+                            x-text="expanded ? 'Lihat lebih sedikit' : 'Lihat lebih banyak'">
+                        </button>
+                    </div>
+                @endif
             </div>
             {{-- Collapse --}}
         </div>
@@ -214,7 +225,7 @@
                 @foreach ($experiences as $experience)
                     <div class="flex gap-3 py-3 @if (!$loop->last) border-b border-b-slate-300 @endif">
                         <img src="{{ asset('storage/' . $experience->place->logo) }}" class="w-10 h-10" alt="">
-                        <div>
+                        <div class="flex flex-col">
                             <h1 class="font-semibold text-md">{{ $experience->job_title }}</h1>
                             <p class="text-sm">{{ $experience->place->name }} · {{ $experience->jobType->name }}</p>
                             <p class="text-sm text-slate-600">
@@ -224,7 +235,25 @@
                             <p class="text-sm text-slate-600">{{ $experience->place->address }}</p>
                             <div class="mt-3 text-sm">
                                 <div class="mb-5 text-sm">
-                                    {!! $experience->description !!}
+
+                                    <div x-data="{ expanded: false }">
+                                        <template x-if="!expanded">
+                                            <div>{!! Str::words($experience->description, 20, '...') !!}</div>
+                                        </template>
+                                        <template x-if="expanded">
+                                            <div>{!! $experience->description !!}</div>
+                                        </template>
+
+                                        @if (str_word_count($experience->description) > 20)
+                                            <div class="flex justify-end">
+                                                <button class="text-slate-600 hover:underline mt-1 text-sm "
+                                                    @click="expanded = !expanded"
+                                                    x-text="expanded ? 'Lihat lebih sedikit' : 'Lihat lebih banyak'">
+                                                </button>
+                                            </div>
+                                        @endif
+                                    </div>
+
                                 </div>
                                 <div class="flex gap-3 mb-3">
                                     @foreach ($experience->image as $image)
@@ -305,7 +334,23 @@
                             <p class="text-sm">{{ $education->gpa }}</p>
                             <div class="mt-3 text-sm">
                                 <div class="mb-5">
-                                    {!! $education->description !!}
+                                    <div x-data="{ expanded: false }">
+                                        <template x-if="!expanded">
+                                            <div>{!! Str::words($education->description, 20, '...') !!}</div>
+                                        </template>
+                                        <template x-if="expanded">
+                                            <div>{!! $education->description !!}</div>
+                                        </template>
+
+                                        @if (str_word_count($education->description) > 20)
+                                            <div class="flex justify-end">
+                                                <button class="text-slate-600 hover:underline mt-1 text-sm "
+                                                    @click="expanded = !expanded"
+                                                    x-text="expanded ? 'Lihat lebih sedikit' : 'Lihat lebih banyak'">
+                                                </button>
+                                            </div>
+                                        @endif
+                                    </div>
                                 </div>
                                 <div class="flex gap-3 my-3">
                                     @foreach ($education->image as $image)
@@ -457,7 +502,23 @@
                         <p class="text-sm">Jul 2024 - Jul 2024</p>
                         <div class="my-3 text-sm">
                             <p>
-                                {{ $project->description }}
+                            <div x-data="{ expanded: false }">
+                                <template x-if="!expanded">
+                                    <div>{!! Str::words($project->description, 20, '...') !!}</div>
+                                </template>
+                                <template x-if="expanded">
+                                    <div>{!! $project->description !!}</div>
+                                </template>
+
+                                @if (str_word_count($project->description) > 20)
+                                    <div class="flex justify-end">
+                                        <button class="text-slate-600 hover:underline mt-1 text-sm "
+                                            @click="expanded = !expanded"
+                                            x-text="expanded ? 'Lihat lebih sedikit' : 'Lihat lebih banyak'">
+                                        </button>
+                                    </div>
+                                @endif
+                            </div>
                             </p>
                             <div class="flex items-center gap-3 mt-5">
                                 @foreach ($project->image as $image)
@@ -558,7 +619,25 @@
                         <h3 class="text-sm">{{ Carbon\Carbon::parse($course->start_date)->format('d M Y') }} -
                             {{ Carbon\Carbon::parse($course->end_date)->format('d M Y') }}</h3>
                         <div class="my-3 text-sm">
-                            <p>{{ $course->description }}</p>
+                            <p>
+                            <div x-data="{ expanded: false }">
+                                <template x-if="!expanded">
+                                    <div>{!! Str::words($course->description, 20, '...') !!}</div>
+                                </template>
+                                <template x-if="expanded">
+                                    <div>{!! $course->description !!}</div>
+                                </template>
+
+                                @if (str_word_count($course->description) > 20)
+                                    <div class="flex justify-end">
+                                        <button class="text-slate-600 hover:underline mt-1 text-sm "
+                                            @click="expanded = !expanded"
+                                            x-text="expanded ? 'Lihat lebih sedikit' : 'Lihat lebih banyak'">
+                                        </button>
+                                    </div>
+                                @endif
+                            </div>
+                            </p>
                         </div>
                     </div>
                 @endforeach
@@ -603,7 +682,24 @@
                             {{ Carbon\Carbon::parse($organization->start_date)->format('M Y') }} -
                             Sekarang </h3>
                         <div class="my-3 text-sm">
-                            <p>{{ $organization->description }}</p>
+                            <p>
+                            <div x-data="{ expanded: false }">
+                                <template x-if="!expanded">
+                                    <div>{!! Str::words($organization->description, 20, '...') !!}</div>
+                                </template>
+                                <template x-if="expanded">
+                                    <div>{!! $organization->description !!}</div>
+                                </template>
+                                @if (str_word_count($organization->description) > 20)
+                                    <div class="flex justify-end">
+                                        <button class="text-slate-600 hover:underline mt-1 text-sm "
+                                            @click="expanded = !expanded"
+                                            x-text="expanded ? 'Lihat lebih sedikit' : 'Lihat lebih banyak'">
+                                        </button>
+                                    </div>
+                                @endif
+                            </div>
+                            </p>
                         </div>
                     </div>
                 @endforeach

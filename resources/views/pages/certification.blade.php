@@ -38,8 +38,11 @@
                                 <i class="fa-solid fa-up-right-from-square fa-sm"></i>
                             </a>
                             <div class="flex items-center gap-3 my-5">
-                                <img src="{{ asset('storage/' . $certification->image) }}" alt=""
-                                    class="h-16 border rounded-lg border-slate-400 w-28">
+                                <a href="{{ asset('storage/' . $certification->image) }}" data-lightbox="certification">
+                                    <img src="{{ asset('storage/' . $certification->image) }}"
+                                        alt="{{ $certification->title }}"
+                                        class="h-16 border rounded-lg border-slate-400 w-28">
+                                </a>
                                 <h1 class="font-semibold">
                                     {{ $certification->description }}
                                 </h1>

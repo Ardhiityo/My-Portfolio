@@ -28,8 +28,10 @@
                             {!! $education->description !!}
                             <div class="flex gap-3 my-3">
                                 @foreach ($education->image as $image)
-                                    <img src="{{ asset('storage/' . $image) }}" alt="{{ $education->degree }}"
-                                        class="h-16 border rounded-lg border-slate-400 w-28">
+                                    <a href="{{ asset('storage/' . $image) }}" data-lightbox="education">
+                                        <img src="{{ asset('storage/' . $image) }}" alt="{{ $education->degree }}"
+                                            class="h-16 border rounded-lg border-slate-400 w-28">
+                                    </a>
                                 @endforeach
                             </div>
                         </div>

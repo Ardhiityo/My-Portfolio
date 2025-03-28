@@ -26,8 +26,10 @@
                         <div class="flex items-center gap-3 mt-5">
                             @foreach ($project->image as $image)
                                 <div class="relative h-16 w-28 border rounded-lg border-slate-400 p-1">
-                                    <img src="{{ asset('storage/' . $image) }}" alt="{{ $project->title }}"
-                                        class="h-full mx-auto">
+                                    <a href="{{ asset('storage/' . $image) }}" data-lightbox="project">
+                                        <img src="{{ asset('storage/' . $image) }}" alt="{{ $project->title }}"
+                                            class="h-full mx-auto">
+                                    </a>
                                     @if ($loop->first)
                                         <div
                                             class="absolute bottom-0 right-0 p-1 bg-white rounded-tl-lg rounded-br-lg shadow border-1 border-slate-400">
