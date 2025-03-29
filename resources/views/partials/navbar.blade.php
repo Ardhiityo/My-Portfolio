@@ -10,7 +10,7 @@
                 <form action="{{ route('project', ['search']) }}" method="GET">
                     <div class="flex">
                         <input type="text" name="title"
-                            class="bg-[#F2F2F2] border-0 w-52 py-1 px-2 rounded-s-md text-sm peer outline-0 focus:border focus:border-slate-800 focus:border-e-0"
+                            class="bg-[#F2F2F2] border-0 sm:w-52 w-28 py-1 px-2 rounded-s-md text-sm peer outline-0 focus:border focus:border-slate-800 focus:border-e-0"
                             placeholder="Cari project...">
                         <button type="submit"
                             class="bg-[#F2F2F2] peer-focus:border peer-focus:border-s-0 peer-focus:border-slate-600 py-1 px-3 rounded-e-md">
