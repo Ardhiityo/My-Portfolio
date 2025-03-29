@@ -11,7 +11,7 @@ class ProjectController extends Controller
 
     public function project(Request $request)
     {
-        if ($query = $request->query('search')) {
+        if ($query = $request->query('title')) {
             $projects = $this->projectService->getProjectsByQueryParam($query);
         } else {
             $projects = $this->projectService->getAllProjects();

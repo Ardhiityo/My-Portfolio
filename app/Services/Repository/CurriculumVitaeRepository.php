@@ -19,13 +19,15 @@ class CurriculumVitaeRepository implements CurriculumVitaeService
 
     public function getCV()
     {
-        $user = User::first();
-        $data = CurriculumVitae::where('user_id', $user->id)->first();
-
-        if (Storage::disk('public')->exists($data->cv)) {
-            $file = Storage::disk('public')->path($data->cv);
-            return response()->download($file, 'CV_Arya_Adhi_Prasetyo.pdf');
+        try {
+            $user = User::first();
+            $data = CurriculumVitae::where('user_id', $user->id)->firstOrFail();
+            if (Storage::disk('public')->exists($data->cv)) {
+                $file = Storage::disk('public')->path($data->cv);
+                return response()->download($file, 'CV_Arya_Adhi_Prasetyo.pdf');
+            }
+        } catch (\Throwable $th) {
+            return redirect()->back()->withErrors(['cv' => 'Ups, file not found!']);
         }
-        return redirect()->back()->withErrors(['cv' => 'Ups, file not found!']);
     }
 }

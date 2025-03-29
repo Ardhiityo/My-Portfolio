@@ -26,7 +26,8 @@ class DatabaseSeeder extends Seeder
             AboutSeeder::class,
             OrganizationSeeder::class,
             ExperienceSeeder::class,
-            EducationSeeder::class
+            EducationSeeder::class,
+            CurriculumVitaeSeeder::class
         ]);
     }
 }
