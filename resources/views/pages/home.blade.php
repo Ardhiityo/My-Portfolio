@@ -181,7 +181,6 @@
     {{-- About me --}}
     <section class="relative max-w-screen-md mx-auto my-2 bg-white border-2 rounded-lg shadow border-slate-300">
         <div class="p-6 min-h-24 ">
-            {{-- Collapse --}}
             <div x-data="{ expanded: false }" class="text-sm">
                 <template x-if="!expanded">
                     <div>{!! Str::words($about->description, 50, '...') !!}</div>
@@ -197,7 +196,6 @@
                     </div>
                 @endif
             </div>
-            {{-- Collapse --}}
         </div>
     </section>
     {{-- About me --}}
