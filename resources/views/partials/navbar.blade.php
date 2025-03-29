@@ -1,10 +1,10 @@
 <header class="bg-white h-[52px] px-6 sticky top-0 z-1 shadow">
     <nav class="h-full max-w-screen-md mx-auto">
-        <ul class="flex items-center h-full gap-2 px-1">
-            <li>
-                <i class="fa-brands fa-linkedin fa-2xl text-[#0A66C2]"></i>
-            </li>
-            <li>
+        <ul class="flex items-center justify-between h-full px-1">
+            <li class="flex items-center h-full gap-2">
+                <div>
+                    <i class="fa-brands fa-linkedin fa-2xl text-[#0A66C2]"></i>
+                </div>
                 <form action="">
                     <div class="flex">
                         <input type="text" name="" id=""
@@ -16,6 +16,12 @@
                         </button>
                     </div>
                 </form>
+            </li>
+            <li>
+                <a class="btn btn-sm" href="{{ route('cv') }}">
+                    <i class="fa-solid fa-download "></i>
+                    CV
+                </a>
             </li>
         </ul>
     </nav>

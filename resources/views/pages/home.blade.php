@@ -3,8 +3,20 @@
 @section('title', 'Arya Adhi Prasetyo')
 
 @section('content')
+    @error('cv')
+        <section class="relative max-w-screen-md mx-auto shado">
+            <div role="alert" class="alert alert-error">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span>Ups, file not found!</span>
+            </div>
+        </section>
+    @enderror
+
     {{-- Profile --}}
-    <section class="relative max-w-screen-md mx-auto border-2 rounded-lg shadow border-slate-300 bg-white">
+    <section class="relative max-w-screen-md mx-auto my-2 border-2 rounded-lg shadow border-slate-300 bg-white">
 
         @if (is_null($profile))
             <div class="rounded-t-lg min-h-48"
@@ -191,7 +203,7 @@
     {{-- About me --}}
 
     {{-- Experience --}}
-    <section class="relative max-w-screen-md mx-auto bg-white border-2 rounded-lg shadow border-slate-300">
+    <section class="relative max-w-screen-md mx-auto my-2 bg-white border-2 rounded-lg shadow border-slate-300">
         <div class="p-6 pb-0 min-h-40 ">
             <h1 class="mb-4 text-lg font-semibold">Pengalaman</h1>
             @empty($experiences)

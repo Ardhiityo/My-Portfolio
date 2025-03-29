@@ -18,10 +18,12 @@ use App\Services\Repository\ProfileRepository;
 use App\Services\Repository\ProjectRepository;
 use App\Services\Interface\OrganizationService;
 use App\Services\Interface\CertificationService;
+use App\Services\Interface\CurriculumVitaeService;
 use App\Services\Repository\EducationRepository;
 use App\Services\Repository\ExperienceRepository;
 use App\Services\Repository\OrganizationRepository;
 use App\Services\Repository\CertificationRepository;
+use App\Services\Repository\CurriculumVitaeRepository;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -39,6 +41,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(SkillService::class, SkillRepository::class);
         $this->app->bind(CourseService::class, CourseRepository::class);
         $this->app->bind(OrganizationService::class, OrganizationRepository::class);
+        $this->app->bind(CurriculumVitaeService::class, CurriculumVitaeRepository::class);
     }
 
     /**

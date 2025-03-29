@@ -95,4 +95,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Education::class);
     }
+
+    public function curriculumVitae()
+    {
+        return $this->hasMany(CurriculumVitae::class);
+    }
 }

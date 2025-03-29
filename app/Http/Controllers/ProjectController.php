@@ -9,9 +9,14 @@ class ProjectController extends Controller
 {
     public function __construct(private ProjectService $projectService) {}
 
-    public function project()
+    public function project(Request $request)
     {
-        $projects = $this->projectService->getAllProjects();
+        if ($query = $request->query('search')) {
+            $projects = $this->projectService->getProjectsByQueryParam($query);
+        } else {
+            $projects = $this->projectService->getAllProjects();
+        }
+
         return view('pages.project', compact('projects'));
     }
 }

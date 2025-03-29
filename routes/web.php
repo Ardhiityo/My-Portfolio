@@ -13,6 +13,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'home'])
     ->name('home');
 
+Route::get('/curriculum-vitae', [HomeController::class, 'curriculumVitae'])
+    ->name('cv');
+
+Route::get('/curriculum-vitae', [HomeController::class, 'curriculumVitae'])
+    ->name('cv');
+
 Route::get('/experience', [ExperienceController::class, 'experience'])
     ->name('experience');
 

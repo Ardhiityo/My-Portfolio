@@ -26,11 +26,24 @@ class ProjectRepository implements ProjectService
 
     public function getTotalProjects()
     {
-        return Project::count();
+        $user = User::first();
+
+        return Project::where('user_id', $user->id)->count();
     }
 
     public function getAllProjects()
     {
-        return Project::all();
+        $user = User::first();
+
+        return Project::where('user_id', $user->id)->get();
+    }
+
+    public function getProjectsByQueryParam(string $queryParam)
+    {
+        $user = User::first();
+
+        return Project::where('user_id', $user->id)
+            ->where('title', 'like', '%' . $queryParam . '%')
+            ->get();
     }
 }

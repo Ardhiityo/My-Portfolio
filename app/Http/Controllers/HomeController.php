@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Storage;
 use App\Services\Interface\AboutService;
-use App\Services\Interface\CertificationService;
+use App\Services\Interface\SkillService;
 use App\Services\Interface\CourseService;
+use App\Services\Interface\ProfileService;
+use App\Services\Interface\ProjectService;
 use App\Services\Interface\EducationService;
 use App\Services\Interface\ExperienceService;
 use App\Services\Interface\OrganizationService;
-use App\Services\Interface\ProfileService;
-use App\Services\Interface\ProjectService;
-use App\Services\Interface\SkillService;
+use App\Services\Interface\CertificationService;
+use App\Services\Interface\CurriculumVitaeService;
 
 class HomeController extends Controller
 {
@@ -23,7 +25,8 @@ class HomeController extends Controller
         private ProjectService $projectService,
         private SkillService $skillService,
         private CourseService $courseService,
-        private OrganizationService $organizationService
+        private OrganizationService $organizationService,
+        private CurriculumVitaeService $curriculumVitaeService
     ) {}
 
     public function home()
@@ -71,5 +74,10 @@ class HomeController extends Controller
                 'totalOrganizations'
             )
         );
+    }
+
+    public function curriculumVitae()
+    {
+        return $this->curriculumVitaeService->getCV();
     }
 }
