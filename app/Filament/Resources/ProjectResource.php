@@ -28,9 +28,11 @@ class ProjectResource extends Resource
                     ->relationship('user', 'name'),
                 Forms\Components\TextInput::make('title')
                     ->required()
+                    ->columnSpanFull()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('link')
                     ->required()
+                    ->columnSpanFull()
                     ->maxLength(255),
                 Forms\Components\DatePicker::make('start_date')
                     ->required(),

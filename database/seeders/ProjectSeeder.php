@@ -37,15 +37,5 @@ class ProjectSeeder extends Seeder
             'image' => [$storedPath],
             'description' => 'Studi Kasus ini dibuat menggunakan Vue Js 3 di sisi Front-End, lalu Vue Router untuk Routing, dan Pinia sebagai State Managementnya, serta Firebase yang berfungsi sebagai database, aplikasi ini di deploy menggunakan layanan hosting dari Firebase, tujuan dari Studi Kasus ini adalah pemantapan materi CRUD yang berfokus pada penggunaan Vue Js dari mulai Reusable Component, memahami State Management menggunakan Pinia, serta mengetahui step by step CRUD pada Firebase.'
         ]);
-
-        Project::create([
-            'user_id' => $user->id,
-            'title' => 'Abc',
-            'start_date' => '2025-03-01',
-            'link' => 'https://vue-blog-33fef.web.app',
-            'end_date' => '2025-03-01',
-            'image' => [$storedPath],
-            'description' => 'Studi Kasus ini dibuat menggunakan Vue Js 3 di sisi Front-End, lalu Vue Router untuk Routing, dan Pinia sebagai State Managementnya, serta Firebase yang berfungsi sebagai database, aplikasi ini di deploy menggunakan layanan hosting dari Firebase, tujuan dari Studi Kasus ini adalah pemantapan materi CRUD yang berfokus pada penggunaan Vue Js dari mulai Reusable Component, memahami State Management menggunakan Pinia, serta mengetahui step by step CRUD pada Firebase.'
-        ]);
     }
 }

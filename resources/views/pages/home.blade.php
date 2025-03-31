@@ -182,19 +182,28 @@
     <section class="relative max-w-screen-md mx-auto my-2 bg-white border-2 rounded-lg shadow border-slate-300">
         <div class="p-6 min-h-24 ">
             <div x-data="{ expanded: false }" class="text-sm">
-                <template x-if="!expanded">
-                    <div>{!! Str::words($about->description, 50, '...') !!}</div>
-                </template>
-                <template x-if="expanded">
-                    <div>{!! $about->description !!}</div>
-                </template>
-                @if (str_word_count($about->description) > 50)
-                    <div class="flex justify-end">
-                        <button class="text-slate-600 hover:underline mt-1 text-sm " @click="expanded = !expanded"
-                            x-text="expanded ? 'Lihat lebih sedikit' : 'Lihat lebih banyak'">
-                        </button>
-                    </div>
-                @endif
+                @empty($about)
+                    <template x-if="!expanded">
+                        <div>No description available</div>
+                    </template>
+                    <template x-if="expanded">
+                        <div>No description available</div>
+                    </template>
+                @else
+                    <template x-if="!expanded">
+                        <div>{!! Str::words($about->description, 50, '...') !!}</div>
+                    </template>
+                    <template x-if="expanded">
+                        <div>{!! $about->description !!}</div>
+                    </template>
+                    @if (str_word_count($about->description) > 50)
+                        <div class="flex justify-end">
+                            <button class="text-slate-600 hover:underline mt-1 text-sm " @click="expanded = !expanded"
+                                x-text="expanded ? 'Lihat lebih sedikit' : 'Lihat lebih banyak'">
+                            </button>
+                        </div>
+                    @endif
+                @endempty
             </div>
         </div>
     </section>

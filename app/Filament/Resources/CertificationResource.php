@@ -23,6 +23,9 @@ class CertificationResource extends Resource
     {
         return $form
             ->schema([
+                Forms\Components\Select::make('user_id')
+                    ->required()
+                    ->relationship('user', 'name'),
                 Forms\Components\TextInput::make('title')
                     ->required()
                     ->maxLength(255),
