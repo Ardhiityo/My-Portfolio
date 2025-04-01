@@ -20,17 +20,33 @@ class OrganizationRepository implements OrganizationService
     {
         $user = User::first();
 
-        return Organization::where('user_id', $user->id)
-            ->latest()->take(3)->get();
+        if ($user) {
+            return Organization::where('user_id', $user->id)
+                ->latest()->take(3)->get();
+        }
+
+        return [];
     }
 
     public function getTotalOrganizations()
     {
-        return Organization::count();
+        $user = User::first();
+
+        if ($user) {
+            return Organization::where('user_id', $user->id)->count();
+        }
+
+        return 0;
     }
 
     public function getAllOrganizations()
     {
-        return Organization::all();
+        $user = User::first();
+
+        if ($user) {
+            return Organization::where('user_id', $user->id)->get();
+        }
+
+        return [];
     }
 }

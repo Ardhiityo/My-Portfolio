@@ -20,18 +20,34 @@ class SkillRepository implements SkillService
     {
         $user = User::first();
 
-        return Skill::with('category')
-            ->where('user_id', $user->id)
-            ->latest()->take(3)->get();
+        if ($user) {
+            return Skill::with('category')
+                ->where('user_id', $user->id)
+                ->latest()->take(3)->get();
+        }
+
+        return [];
     }
 
     public function getTotalSkills()
     {
-        return Skill::count();
+        $user = User::first();
+
+        if ($user) {
+            return Skill::where('user_id', $user->id)->get();
+        }
+
+        return 0;
     }
 
     public function getAllSkills()
     {
-        return Skill::with('category')->get();
+        $user = User::first();
+
+        if ($user) {
+            return Skill::with('category')->where('user_id', $user->id)->get();
+        }
+
+        return [];
     }
 }

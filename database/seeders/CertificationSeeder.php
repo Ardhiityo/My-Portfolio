@@ -28,7 +28,7 @@ class CertificationSeeder extends Seeder
             Storage::disk('public')->put($storedPath, file_get_contents($publicPath));
         }
 
-        $place = Place::first();
+        $place = Place::where('name', 'Codepolitan')->first();
         $user = User::first();
 
         Certification::create([

@@ -20,18 +20,34 @@ class ExperienceRepository implements ExperienceService
     {
         $user = User::first();
 
-        return Experience::with('place')
-            ->where('user_id', $user->id)
-            ->latest()->take(3)->get();
+        if ($user) {
+            return Experience::with('place')
+                ->where('user_id', $user->id)
+                ->latest()->take(3)->get();
+        }
+
+        return [];
     }
 
     public function getTotalExperirences()
     {
-        return Experience::count();
+        $user = User::first();
+
+        if ($user) {
+            return Experience::where('user_id', $user->id)->count();
+        }
+
+        return 0;
     }
 
     public function getAllExperiences()
     {
-        return Experience::with('place', 'jobType')->get();
+        $user = User::first();
+
+        if ($user) {
+            return Experience::with('place', 'jobType')->where('user_id', $user->id)->get();
+        }
+
+        return [];
     }
 }

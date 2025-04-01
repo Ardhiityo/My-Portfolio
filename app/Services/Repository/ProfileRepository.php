@@ -21,14 +21,18 @@ class ProfileRepository implements ProfileService
     {
         $user = User::first();
 
-        return Profile::where('user_id', $user->id)->first();
+        if ($user) {
+            return Profile::where('user_id', $user->id)->first();
+        }
     }
 
     public function getContact()
     {
         $user = User::first();
 
-        return Contact::with('user')
-            ->where('user_id', $user->id)->first();
+        if ($user) {
+            return Contact::with('user')
+                ->where('user_id', $user->id)->first();
+        }
     }
 }

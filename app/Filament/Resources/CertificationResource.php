@@ -28,19 +28,23 @@ class CertificationResource extends Resource
                     ->relationship('user', 'name'),
                 Forms\Components\TextInput::make('title')
                     ->required()
-                    ->maxLength(255),
+                    ->maxLength(255)
+                    ->columnSpanFull(),
                 Forms\Components\Select::make('place_id')
                     ->relationship('place', 'name')
-                    ->required(),
+                    ->required()
+                    ->columnSpanFull(),
                 Forms\Components\DatePicker::make('published_date')
                     ->required(),
                 Forms\Components\DatePicker::make('expired_date')
                     ->required(),
                 Forms\Components\TextInput::make('credential')
                     ->required()
-                    ->maxLength(255),
+                    ->maxLength(255)
+                    ->columnSpanFull(),
                 Forms\Components\TextInput::make('description')
                     ->required()
+                    ->columnSpanFull()
                     ->maxLength(255),
                 Forms\Components\FileUpload::make('image')
                     ->image()

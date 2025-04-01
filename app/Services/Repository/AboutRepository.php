@@ -19,6 +19,10 @@ class AboutRepository implements AboutService
     {
         $user = User::first();
 
-        return About::where('user_id', $user->id)->first();
+        if ($user) {
+            return About::where('user_id', $user->id)->first();
+        }
+
+        return [];
     }
 }

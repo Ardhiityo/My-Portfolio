@@ -20,30 +20,46 @@ class ProjectRepository implements ProjectService
     {
         $user = User::first();
 
-        return Project::where('user_id', $user->id)
-            ->latest()->take(3)->get();
+        if ($user) {
+            return Project::where('user_id', $user->id)
+                ->latest()->take(3)->get();
+        }
+
+        return [];
     }
 
     public function getTotalProjects()
     {
         $user = User::first();
 
-        return Project::where('user_id', $user->id)->count();
+        if ($user) {
+            return Project::where('user_id', $user->id)->count();
+        }
+
+        return 0;
     }
 
     public function getAllProjects()
     {
         $user = User::first();
 
-        return Project::where('user_id', $user->id)->get();
+        if ($user) {
+            return Project::where('user_id', $user->id)->get();
+        }
+
+        return [];
     }
 
     public function getProjectsByQueryParam(string $queryParam)
     {
         $user = User::first();
 
-        return Project::where('user_id', $user->id)
-            ->where('title', 'like', '%' . $queryParam . '%')
-            ->get();
+        if ($user) {
+            return Project::where('user_id', $user->id)
+                ->where('title', 'like', '%' . $queryParam . '%')
+                ->get();
+        }
+
+        return [];
     }
 }

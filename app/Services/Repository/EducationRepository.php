@@ -20,27 +20,47 @@ class EducationRepository implements EducationService
     {
         $user = User::first();
 
-        return Education::with('place')
-            ->where('user_id', $user->id)
-            ->latest()->take(3)->get();
+        if ($user) {
+            return Education::with('place')
+                ->where('user_id', $user->id)
+                ->latest()->take(3)->get();
+        }
+
+        return [];
     }
 
     public function getLatestEducation()
     {
         $user = User::first();
 
-        return Education::with('place')
-            ->where('user_id', $user->id)
-            ->latest()->first();
+        if ($user) {
+            return Education::with('place')
+                ->where('user_id', $user->id)
+                ->latest()->first();
+        }
+
+        return [];
     }
 
     public function getTotalEducations()
     {
-        return Education::count();
+        $user = User::first();
+
+        if ($user) {
+            return Education::where('user_id', $user->id)->count();
+        }
+
+        return 0;
     }
 
     public function getAllEducations()
     {
-        return Education::with('place')->get();
+        $user = User::first();
+
+        if ($user) {
+            return Education::with('place')->where('user_id', $user->id)->get();
+        }
+
+        return [];
     }
 }

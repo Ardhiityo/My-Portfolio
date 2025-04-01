@@ -20,18 +20,34 @@ class CourseRepository implements CourseService
     {
         $user = User::first();
 
-        return Course::with('place')
-            ->where('user_id', $user->id)
-            ->latest()->take(3)->get();
+        if ($user) {
+            return Course::with('place')
+                ->where('user_id', $user->id)
+                ->latest()->take(3)->get();
+        }
+
+        return [];
     }
 
     public function getTotalCourses()
     {
-        return Course::count();
+        $user = User::first();
+
+        if ($user) {
+            return Course::where('user_id', $user->id)->count();
+        }
+
+        return 0;
     }
 
     public function getAllCourses()
     {
-        return Course::with('place')->get();
+        $user = User::first();
+
+        if ($user) {
+            return Course::with('place')->where('user_id', $user->id)->get();
+        }
+
+        return [];
     }
 }

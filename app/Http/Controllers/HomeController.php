@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Log;
 use App\Services\Interface\AboutService;
 use App\Services\Interface\SkillService;
 use App\Services\Interface\CourseService;

@@ -2,7 +2,24 @@
 
 namespace App\Providers;
 
-use App\Models\Organization;
+use App\Models\Certification;
+use App\Models\CurriculumVitae;
+use App\Models\Education;
+use App\Models\Experience;
+use App\Models\JobType;
+use App\Models\Place;
+use App\Models\Profile;
+use App\Models\Project;
+use App\Models\Pronoun;
+use App\Observers\CertificationObserver;
+use App\Observers\CurriculumVitaeObserver;
+use App\Observers\EducationObserver;
+use App\Observers\ExperienceObserver;
+use App\Observers\JobTypeObserver;
+use App\Observers\PlaceObserver;
+use App\Observers\ProfileObserver;
+use App\Observers\ProjectObserver;
+use App\Observers\PronounObserver;
 use Illuminate\Support\ServiceProvider;
 use App\Services\Interface\AboutService;
 use App\Services\Interface\SkillService;
@@ -49,6 +66,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Certification::observe(CertificationObserver::class);
+        CurriculumVitae::observe(CurriculumVitaeObserver::class);
+        Education::observe(EducationObserver::class);
+        Experience::observe(ExperienceObserver::class);
+        Place::observe(PlaceObserver::class);
+        Pronoun::observe(PronounObserver::class);
+        Profile::observe(ProfileObserver::class);
+        Project::observe(ProjectObserver::class);
+        JobType::observe(JobTypeObserver::class);
     }
 }

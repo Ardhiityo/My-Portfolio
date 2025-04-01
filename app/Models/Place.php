@@ -22,4 +22,9 @@ class Place extends Model
     {
         return $this->hasMany(Education::class);
     }
+
+    public function experiences()
+    {
+        return $this->hasMany(Experience::class);
+    }
 }

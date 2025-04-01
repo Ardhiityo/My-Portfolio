@@ -169,9 +169,14 @@
             </section>
             <section class="invisible mt-12 sm:visible">
                 <div class="flex items-center gap-1">
-                    <img src="{{ asset('storage/' . $latestEducation->place->logo) }}"
-                        alt="{{ $latestEducation->place->name }}" class="w-7 h-7">
-                    <p class="text-xs font-semibold">{{ $latestEducation->place->name }}</p>
+                    @empty($latestEducation)
+                        <img src="{{ asset('images/unival.jpeg') }}" alt="unival" class="w-7 h-7">
+                        <p class="text-xs font-semibold">Universitas Al-Khairiyah</p>
+                    @else
+                        <img src="{{ asset('storage/' . $latestEducation->place->logo) }}"
+                            alt="{{ $latestEducation->place->name }}" class="w-7 h-7">
+                        <p class="text-xs font-semibold">{{ $latestEducation->place->name }}</p>
+                    @endempty
                 </div>
             </section>
         </div>
@@ -181,15 +186,14 @@
     {{-- About me --}}
     <section class="relative max-w-screen-md mx-auto my-2 bg-white border-2 rounded-lg shadow border-slate-300">
         <div class="p-6 min-h-24 ">
-            <div x-data="{ expanded: false }" class="text-sm">
-                @empty($about)
-                    <template x-if="!expanded">
-                        <div>No description available</div>
-                    </template>
-                    <template x-if="expanded">
-                        <div>No description available</div>
-                    </template>
-                @else
+            @empty($about)
+                <div class="text-sm">
+                    <p>
+                        No description available
+                    </p>
+                </div>
+            @else
+                <div x-data="{ expanded: false }" class="text-sm">
                     <template x-if="!expanded">
                         <div>{!! Str::words($about->description, 50, '...') !!}</div>
                     </template>
@@ -203,8 +207,8 @@
                             </button>
                         </div>
                     @endif
-                @endempty
-            </div>
+                </div>
+            @endempty
         </div>
     </section>
     {{-- About me --}}
@@ -214,7 +218,9 @@
         <div class="p-6 pb-0 min-h-40 ">
             <h1 class="mb-4 text-lg font-semibold">Pengalaman</h1>
             @forelse ($experiences as $experience)
-                <div class="flex gap-3 py-3 @if (!$loop->last) border-b border-b-slate-300 @endif">
+                <div
+                    class="flex gap-3 py-3
+                    @if (!$loop->last) border-b border-b-slate-300 @endif">
                     <img src="{{ asset('storage/' . $experience->place->logo) }}" class="w-10 h-10" alt="">
                     <div class="flex flex-col">
                         <h1 class="font-semibold text-md">{{ $experience->job_title }}</h1>
@@ -348,13 +354,14 @@
             @empty
                 <div class="mb-3">
                     <h1 class="font-semibold text-md">
-                        {{ $organization->name }}
+                        Kelompok studi pasar modal
                     </h1>
-                    <h3 class="text-sm">{{ $organization->job_title }} ·
-                        {{ Carbon\Carbon::parse($organization->start_date)->format('M Y') }} -
+                    <h3 class="text-sm">Anggota ·
+                        Mar 2024 -
                         Sekarang </h3>
                     <div class="my-3 text-sm">
-                        <p>{{ $organization->description }}</p>
+                        <p>Sharing knowledge kepada mahasiswa betapa pentingnya investasi sedari dini, dan mejadi panitia
+                            dalam rangkaian acara-acara seminar investasi di dunia pasar modal.</p>
                     </div>
                 </div>
                 <div class="flex gap-3 mb-3">
@@ -399,7 +406,9 @@
         <div class="p-6 pb-0 min-h-40 ">
             <h1 class="mb-4 text-lg font-semibold">Lisensi dan sertifikasi</h1>
             @forelse ($certifications as $certification)
-                <div class="flex gap-3 py-3 @if (!$loop->last) border-b border-b-slate-300 @endif">
+                <div
+                    class="flex gap-3 py-3
+                    @if (!$loop->last) border-b border-b-slate-300 @endif">
                     <img src="{{ asset('storage/' . $certification->place->logo) }}" class="w-10 h-10" alt="">
                     <div>
                         <h1 class="font-semibold text-md">
@@ -478,7 +487,9 @@
         <div class="p-6 pb-0 min-h-40 ">
             <h1 class="mb-4 text-lg font-semibold">Proyek</h1>
             @forelse ($projects as $project)
-                <div class="py-3 @if (!$loop->last) border-b border-b-slate-300 @endif">
+                <div
+                    class="py-3
+                    @if (!$loop->last) border-b border-b-slate-300 @endif">
                     <h1 class="font-semibold text-md">
                         {{ $project->title }}
                     </h1>
@@ -572,7 +583,9 @@
         <div class="p-6 pb-0 min-h-28 ">
             <h1 class="text-lg mb-4 font-semibold">Keahlian</h1>
             @forelse ($skills as $skill)
-                <div class="py-3 @if (!$loop->last) border-b border-b-slate-300 @endif">
+                <div
+                    class="py-3
+                    @if (!$loop->last) border-b border-b-slate-300 @endif">
                     <h1 class="font-semibold">
                         {{ $skill->name }} - {{ $skill->category->name }}
                     </h1>
@@ -663,7 +676,9 @@
         <div class="p-6 pb-0 min-h-40 ">
             <h1 class="mb-4 text-lg font-semibold">Organisasi</h1>
             @forelse ($organizations as $organization)
-                <div class="py-3 @if (!$loop->last) border-b border-b-slate-300 @endif">
+                <div
+                    class="py-3
+                    @if (!$loop->last) border-b border-b-slate-300 @endif">
                     <h1 class="font-semibold text-md">
                         {{ $organization->name }}
                     </h1>

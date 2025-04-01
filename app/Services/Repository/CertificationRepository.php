@@ -20,18 +20,32 @@ class CertificationRepository implements CertificationService
     {
         $user = User::first();
 
-        return Certification::with('user')
-            ->where('user_id', $user->id)
-            ->latest()->take(3)->get();
+        if ($user) {
+            return Certification::with('user')
+                ->where('user_id', $user->id)
+                ->latest()->take(3)->get();
+        }
+
+        return [];
     }
 
     public function getTotalCertifications()
     {
-        return Certification::count();
+        $user = User::first();
+
+        if ($user) {
+            return Certification::where('user_id', $user->id)->count();
+        }
+
+        return 0;
     }
 
     public function getAllCertifications()
     {
-        return Certification::with('place')->get();
+        $user = User::first();
+
+        if ($user) {
+            return Certification::with('place')->where('user_id', $user->id)->get();
+        }
     }
 }
