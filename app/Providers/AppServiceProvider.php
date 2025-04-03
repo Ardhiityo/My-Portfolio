@@ -2,28 +2,29 @@
 
 namespace App\Providers;
 
-use App\Models\Certification;
-use App\Models\CurriculumVitae;
-use App\Models\Education;
-use App\Models\Experience;
-use App\Models\JobType;
 use App\Models\Place;
+use App\Models\JobType;
 use App\Models\Profile;
 use App\Models\Project;
 use App\Models\Pronoun;
-use App\Observers\CertificationObserver;
-use App\Observers\CurriculumVitaeObserver;
-use App\Observers\EducationObserver;
-use App\Observers\ExperienceObserver;
-use App\Observers\JobTypeObserver;
+use App\Models\Education;
+use App\Models\Experience;
+use App\Models\Certification;
+use App\Models\CurriculumVitae;
 use App\Observers\PlaceObserver;
+use App\Observers\JobTypeObserver;
 use App\Observers\ProfileObserver;
 use App\Observers\ProjectObserver;
 use App\Observers\PronounObserver;
+use Illuminate\Support\Facades\URL;
+use App\Observers\EducationObserver;
+use App\Observers\ExperienceObserver;
 use Illuminate\Support\ServiceProvider;
+use App\Observers\CertificationObserver;
 use App\Services\Interface\AboutService;
 use App\Services\Interface\SkillService;
 use App\Services\Interface\CourseService;
+use App\Observers\CurriculumVitaeObserver;
 use App\Services\Interface\ProfileService;
 use App\Services\Interface\ProjectService;
 use App\Services\Interface\EducationService;
@@ -35,9 +36,9 @@ use App\Services\Repository\ProfileRepository;
 use App\Services\Repository\ProjectRepository;
 use App\Services\Interface\OrganizationService;
 use App\Services\Interface\CertificationService;
-use App\Services\Interface\CurriculumVitaeService;
 use App\Services\Repository\EducationRepository;
 use App\Services\Repository\ExperienceRepository;
+use App\Services\Interface\CurriculumVitaeService;
 use App\Services\Repository\OrganizationRepository;
 use App\Services\Repository\CertificationRepository;
 use App\Services\Repository\CurriculumVitaeRepository;
@@ -66,6 +67,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        //file css, js hanya akan diload jika url ngrok-free.app, dan url asset menjadi https (default ngrok adalah http untuk file css, js)
+        if (str_contains(request()->url(), 'ngrok-free.app')) {
+            URL::forceScheme('https');
+        }
+
         Certification::observe(CertificationObserver::class);
         CurriculumVitae::observe(CurriculumVitaeObserver::class);
         Education::observe(EducationObserver::class);
