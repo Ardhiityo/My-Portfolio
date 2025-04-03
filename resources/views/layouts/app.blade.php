@@ -5,15 +5,7 @@
 <main class="py-5 min-h-screen">
     @yield('content')
     <section class="max-w-screen-md mx-auto my-2">
-        <div class="px-6 flex items-center justify-evenly gap-3">
-            <nav>
-                <div class="flex items-center gap-2">
-                    <p class="text-xs">Other social media</p>
-                    <a href="https://www.instagram.com/ardhiityo/">
-                        <i class="fa-brands fa-instagram"></i>
-                    </a>
-                </div>
-            </nav>
+        <div class="px-6 flex items-center justify-center">
             <nav class="flex items-center gap-2">
                 <p class="text-xs">Design inspiration from
                 </p>
