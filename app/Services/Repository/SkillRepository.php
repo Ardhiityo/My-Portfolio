@@ -34,7 +34,7 @@ class SkillRepository implements SkillService
         $user = User::first();
 
         if ($user) {
-            return Skill::where('user_id', $user->id)->get();
+            return Skill::where('user_id', $user->id)->count();
         }
 
         return 0;
