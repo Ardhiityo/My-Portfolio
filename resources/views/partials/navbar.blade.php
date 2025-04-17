@@ -21,7 +21,7 @@
             </li>
             <li>
                 <div class="flex items-center gap-4">
-                    <a class="btn bg-[#F2F2F2] btn-sm rounded-full hover:bg-slate-200 border-2 boder-slate-600"
+                    <a class="btn bg-[#F2F2F2] btn-sm rounded-full hover:bg-slate-200 px-2 border border-slate-600"
                         href="{{ route('cv') }}">
                         <i class="fa-solid fa-download"></i>
                         CV
