@@ -21,7 +21,7 @@ class CurriculumVitaeRepository implements CurriculumVitaeService
     {
         try {
             $user = User::first();
-            $data = CurriculumVitae::where('user_id', $user->id)->firstOrFail();
+            $data = CurriculumVitae::where('user_id', $user->id)->latest()->firstOrFail();
             if (Storage::disk('public')->exists($data->cv)) {
                 $file = Storage::disk('public')->path($data->cv);
                 return response()->download($file, 'CV_Arya_Adhi_Prasetyo.pdf');
